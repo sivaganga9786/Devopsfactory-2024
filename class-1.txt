@@ -1,0 +1,6 @@
+# Linux Commands
+
+cd -change directory
+
+ls - list of files and directory
+
