@@ -1,0 +1,10 @@
+git clone  - download the file from github to local
+git add . -  Moves changes from the working directory to the staging area.
+git commit -m - Takes the staged snapshot and commits it to the project history
+git push - update files to github
+git pull - update the last changes from github to local 
+git branch - show the current branch
+git checkout shift the one branch to another
+git fetch
+git rebase
+git log - list the git commits

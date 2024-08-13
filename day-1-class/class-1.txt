@@ -2,48 +2,32 @@
 
 cd -change directory
 ls - list of files and directory
-pwd - prest working directory
+pwd - present working directory
 mkdir - create a directory
 rm - remove a file or directory
 cp - copy a file or directory
 mv - move a file or directory
 touch - create a file
-cat - Display file contents on the terminal
+cat - Display file contents on the terminal or cmd or vscode
 echo - Print any text that follows the command
-less - Linux command to display paged outputs in the terminal
-man - Access manual pages for all Linux commands
-uname - Linux command to get basic information about the OS
 whoami - Get the active username
 tar - Command to extract and compress files in linux
 grep - Search for a string within an output
-head - Return the specified number of lines from the top
 tail - Return the specified number of lines from the bottom
-diff - Find the difference between two files
-cmp - Allows you to check if two files are identical
-comm - Combines the functionality of diff and cmp
-
-sort - Linux command to sort the content of a file while outputting
 export - Export environment variables in Linux
 zip - Zip files in Linux
 unzip - Unzip files in Linux
-ssh - Secure Shell command in Linux
-service - Linux command to start and stop services
 ps - Display active processes
 kill and killall - Kill active processes by process ID or name
 df - Display disk filesystem information
-mount - Mount file systems in Linux
 chmod - Command to change file permissions
 chown - Command for granting ownership of files or folders
 ifconfig - Display network interfaces and IP addresses
-traceroute - Trace all the network hops to reach the destination
 wget - Direct download files from the internet
-ufw - Firewall command
-iptables - Base firewall for all other firewall utilities to interface with
-apt, pacman, yum, rpm - Package managers depending on the distribution
+apt, pacman, yum, rpm - Package managers depending on the distribution depending on OS
 sudo - Command to escalate privileges in Linux
-cal - View a command-line calendar
 alias - Create custom shortcuts for your regularly used commands
-dd - Majorly used for creating bootable USB sticks
 whereis - Locate the binary, source, and manual pages for a command
-
+useradd and usermod - Add a new user or change existing user data
+passwd - Create or update passwords for existing users
 
