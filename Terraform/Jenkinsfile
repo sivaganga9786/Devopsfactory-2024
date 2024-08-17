@@ -41,7 +41,7 @@ pipeline {
 
         stage('Apply') {
             steps {
-                sh "pwd;cd Terraform/ ; terraform apply -input=false"
+                sh "pwd;cd Terraform/ ; terraform apply -input=false -auto-approve"
             }
         }
     }
