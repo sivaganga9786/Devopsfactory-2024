@@ -5,12 +5,15 @@ pipeline {
 
    agent  any
     stages {
-        stage('Checkout') {
+        stage('checkout') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']],
-                          userRemoteConfigs: [[url: 'https://github.com/sivaganga9786/Devopsfactory-2024.git', credentialsId: 'github']]])
-            }
-        }
+                 script{
+                        dir("terraform")
+                        {
+                            git "https://github.com/sivaganga9786/Devopsfactory-2024.git"
+                        }
+                    }
+                }
             }
 
         stage('Plan') {
