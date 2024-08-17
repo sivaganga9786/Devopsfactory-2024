@@ -1,60 +1,48 @@
 pipeline {
+
     parameters {
         booleanParam(name: 'autoApprove', defaultValue: false, description: 'Automatically run apply after generating plan?')
-    }
-    
-    agent any
-    
-    environment {
-        TF_DIR = 'Terraform'  // Adjusted to work within the main workspace directory
-        REPO_URL = 'https://github.com/sivaganga9786/Devopsfactory-2024.git'
-        PLAN_FILE = 'tfplan'
-        PLAN_OUTPUT = 'tfplan.txt'
-    }
+    } 
 
+   agent  any
     stages {
-        stage('Checkout') {
+        stage('checkout') {
             steps {
-                script {
-                    // Checkout directly into the workspace without needing a specific 'terraform' directory
-                    git url: "${REPO_URL}"
+                 script
+                        {
+                            git "https://github.com/sivaganga9786/Devopsfactory-2024.git"
+                        }
                 }
             }
-        }
 
         stage('Plan') {
             steps {
-                script {
-                    dir("${TF_DIR}") {
-                        sh 'terraform init'
-                        sh "terraform plan -out ${PLAN_FILE}"
-                        sh "terraform show -no-color ${PLAN_FILE} > ${PLAN_OUTPUT}"
-                    }
-                }
+                sh 'pwd;cd Terraform/ ; terraform init'
+                sh "pwd;cd Terraform/ ; terraform plan -out tfplan"
+                sh 'pwd;cd Terraform/ ; terraform show -no-color tfplan > tfplan.txt'
             }
         }
-
         stage('Approval') {
-            when {
-                not { equals expected: true, actual: params.autoApprove }
-            }
-            steps {
-                script {
-                    def plan = readFile("${TF_DIR}/${PLAN_OUTPUT}")
+           when {
+               not {
+                   equals expected: true, actual: params.autoApprove
+               }
+           }
+
+           steps {
+               script {
+                    def plan = readFile 'Terraform/tfplan.txt'
                     input message: "Do you want to apply the plan?",
-                          parameters: [text(name: 'Plan', description: 'Please review the plan', defaultValue: plan)]
-                }
-            }
-        }
+                    parameters: [text(name: 'Plan', description: 'Please review the plan', defaultValue: plan)]
+               }
+           }
+       }
 
         stage('Apply') {
             steps {
-                script {
-                    dir("${TF_DIR}") {
-                        sh "terraform apply -input=false ${PLAN_FILE}"
-                    }
-                }
+                sh "pwd;cd Terraform/ ; terraform apply -input=false tfplan"
             }
         }
     }
-}
+
+  }
