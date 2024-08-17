@@ -4,7 +4,7 @@ resource "aws_vpc" "main_vpc" {
   cidr_block = "10.0.0.0/16"
 
   tags = {
-    Name = "MainVPC"
+    Name = "MainVPC1"
   }
 }
 
@@ -15,7 +15,7 @@ resource "aws_subnet" "main_subnet" {
   map_public_ip_on_launch = true
 
   tags = {
-    Name = "MainSubnet"
+    Name = "MainSubnet1"
   }
 }
 
@@ -24,7 +24,7 @@ resource "aws_internet_gateway" "main_igw" {
   vpc_id = aws_vpc.main_vpc.id
 
   tags = {
-    Name = "MainIGW"
+    Name = "MainIGW1"
   }
 }
 
@@ -38,7 +38,7 @@ resource "aws_route_table" "main_route_table" {
   }
 
   tags = {
-    Name = "MainRouteTable"
+    Name = "MainRouteTable1"
   }
 }
 
@@ -67,13 +67,13 @@ resource "aws_security_group" "main_sg" {
   }
 
   tags = {
-    Name = "MainSG"
+    Name = "MainSG1"
   }
 }
 
 # Create the EC2 Instance
 
-resource "aws_instance" "terraform_auto" {
+resource "aws_instance" "terraform_auto1" {
   ami           = "ami-0ae8f15ae66fe8cda"  # Your AMI ID
   instance_type = "t2.micro"               # Instance type
   subnet_id     = aws_subnet.main_subnet.id
@@ -132,7 +132,7 @@ resource "aws_instance" "terraform_auto" {
         fi
   EOF
   tags = {
-    Name = "MyTerraformEC2Instance"
+    Name = "ansible-ec2"
   }
 
   key_name = "mykeypair2024"  # Replace with your key pair name
