@@ -6,14 +6,12 @@ pipeline {
 
    agent  any
     stages {
-        stage('checkout') {
+        stage('Checkout') {
             steps {
-                 script
-                        {
-                            git "https://github.com/sivaganga9786/Devopsfactory-2024.git"
-                        }
-                }
+                git branch: 'main', 
+                    url: 'https://github.com/sivaganga9786/Devopsfactory-2024'
             }
+        }
 
         stage('Plan') {
             steps {
