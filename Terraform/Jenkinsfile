@@ -6,11 +6,9 @@ pipeline {
    agent  any
     stages {
         stage('checkout') {
-            steps {
-                        {
-                            git "https://github.com/sivaganga9786/Devopsfactory-2024.git"
-                        }
-                    }
+            steps {     
+                    git "https://github.com/sivaganga9786/Devopsfactory-2024.git"
+                  }
                 }
             }
 
