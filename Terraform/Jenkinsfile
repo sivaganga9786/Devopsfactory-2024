@@ -41,7 +41,7 @@ pipeline {
 
         stage('Apply') {
             steps {
-                sh "pwd;cd Terraform/ ; terraform apply -input=false tfplan"
+                sh "pwd;cd Terraform/ ; terraform apply -input=false"
             }
         }
     }
