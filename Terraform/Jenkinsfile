@@ -7,8 +7,6 @@ pipeline {
     stages {
         stage('checkout') {
             steps {
-                 script{
-                        dir("terraform")
                         {
                             git "https://github.com/sivaganga9786/Devopsfactory-2024.git"
                         }
@@ -18,9 +16,9 @@ pipeline {
 
         stage('Plan') {
             steps {
-                sh 'pwd;cd Terraform/terraform/ ; terraform init'
-                sh "pwd;cd Terraform/terraform/ ; terraform plan -out tfplan"
-                sh 'pwd;cd Terraform/terraform/ ; terraform show -no-color tfplan > tfplan.txt'
+                sh 'pwd;cd Terraform ; terraform init'
+                sh "pwd;cd Terraform ; terraform plan -out tfplan"
+                sh 'pwd;cd Terraform ; terraform show -no-color tfplan > tfplan.txt'
             }
         }
         stage('Approval') {
@@ -32,7 +30,7 @@ pipeline {
 
            steps {
                script {
-                    def plan = readFile 'terraform/tfplan.txt'
+                    def plan = readFile 'Terraform/tfplan.txt'
                     input message: "Do you want to apply the plan?",
                     parameters: [text(name: 'Plan', description: 'Please review the plan', defaultValue: plan)]
                }
@@ -41,7 +39,7 @@ pipeline {
 
         stage('Apply') {
             steps {
-                sh "pwd;cd Terraform/terraform/ ; terraform apply -input=false tfplan"
+                sh "pwd;cd Terraform ; terraform apply -input=false tfplan"
             }
         }
     }
